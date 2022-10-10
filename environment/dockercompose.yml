@@ -1,0 +1,16 @@
+services:
+  gistapi:
+    container_name: gistapi
+    build:
+      context: ..
+      dockerfile: environment/backend.dockerfile
+    environment:
+      - FLASK_DEBUG=true
+      - FLASK_APP=gistapi.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=9876
+    volumes:
+      - ../gistapi:/gistapi
+    ports:
+      - 9000:9876
+    command: flask run
